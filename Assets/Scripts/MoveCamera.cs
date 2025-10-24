@@ -18,7 +18,7 @@ public class MoveCamera : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         dotperinch = 16.3286f;
         radsPerDot = math.TAU / dotperinch;
-        userSens = 0.4f;
+        userSens = 1.2f;
         sensMultiplier = userSens * radsPerDot;
     }
 
