@@ -25,4 +25,14 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("Assets/Scenes/SampleScene.unity");
     }
+
+    public void toMenu()
+    {
+        SceneManager.LoadScene("Assets/Scenes/Menu.unity");
+    }
+
+    public void toSettings()
+    {
+        SceneManager.LoadScene("Assets/Scenes/Settings.unity");
+    }
 }

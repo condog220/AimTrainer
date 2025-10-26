@@ -18,7 +18,7 @@ public class MoveCamera : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         dotperinch = 16.3286f;
         radsPerDot = math.TAU / dotperinch;
-        userSens = 1.2f;
+        userSens = 0.8f;
         sensMultiplier = userSens * radsPerDot;
     }
 
@@ -26,8 +26,8 @@ public class MoveCamera : MonoBehaviour
     void Update()
     {
         if(locked){
-            rotationY += Input.GetAxis("Mouse X") * sensMultiplier;
-            rotationX -=  Input.GetAxis("Mouse Y") * sensMultiplier;
+            rotationY += Input.GetAxisRaw("Mouse X") * sensMultiplier/0.4f;
+            rotationX -=  Input.GetAxisRaw("Mouse Y") * sensMultiplier/0.4f;
             rotationX = Mathf.Clamp(rotationX, -90f, 90f);
             transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
         }
