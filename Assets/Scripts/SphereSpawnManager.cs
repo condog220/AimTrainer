@@ -15,6 +15,9 @@ public class SphereSpawnManager : MonoBehaviour
 
     [SerializeField] LayerMask layer;
 
+    [SerializeField] AudioSource hitSound;
+    [SerializeField] AudioClip hitClip;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -56,7 +59,14 @@ public class SphereSpawnManager : MonoBehaviour
             if(activeSpheres.Count < maxSphere){
                 SpawnSphere();
             }
+            playSound();
+            ScoreManager.instance.updateScore();
         }   
+    }
+
+    void playSound()
+    {
+        hitSound.PlayOneShot(hitClip);
     }
     
 }
