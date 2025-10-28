@@ -5,7 +5,7 @@ using Random=UnityEngine.Random;
 
 public class SphereSpawnManager : MonoBehaviour
 {
-    public GameObject spherePrefab;
+    [SerializeField] GameObject spherePrefab;
     public int maxSphere = 3;
     public int randomSpawn;
 
@@ -61,7 +61,12 @@ public class SphereSpawnManager : MonoBehaviour
             }
             playSound();
             ScoreManager.instance.updateScore();
-        }   
+            ScoreManager.instance.registerShot(true);
+        }
+        else
+        {
+            ScoreManager.instance.registerShot(false);
+        }
     }
 
     void playSound()
