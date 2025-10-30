@@ -10,7 +10,7 @@ public class MoveCamera : MonoBehaviour
         float rotationY = 0f;
         float dotperinch;
         private float radsPerDot;
-        private float userSens;
+        public float userSens;
         [SerializeField] private float sensMultiplier;
         bool locked = true;
 
@@ -18,7 +18,7 @@ public class MoveCamera : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         dotperinch = 16.3286f;
         radsPerDot = math.TAU / dotperinch;
-        userSens = 0.8f;
+        userSens = Settings.sensitivity;
         sensMultiplier = userSens * radsPerDot;
     }
 
