@@ -10,13 +10,11 @@ public class SphereSpawnManager : MonoBehaviour
     public int randomSpawn;
 
     [SerializeField] private List<GameObject> activeSpheres = new List<GameObject>();
-
     [SerializeField] private List<Transform> spawnList = new List<Transform>();
-
     [SerializeField] LayerMask layer;
-
     [SerializeField] AudioSource hitSound;
     [SerializeField] AudioClip hitClip;
+    [SerializeField] int timer;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -73,5 +71,6 @@ public class SphereSpawnManager : MonoBehaviour
     {
         hitSound.PlayOneShot(hitClip);
     }
+
     
 }
