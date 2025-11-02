@@ -24,6 +24,9 @@ public class MenuManager : MonoBehaviour
     public void playGame()
     {
         SceneManager.LoadScene("Assets/Scenes/SampleScene.unity");
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Debug.Log("Restting cursor");
     }
 
     public void toMenu()

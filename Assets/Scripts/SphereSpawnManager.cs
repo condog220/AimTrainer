@@ -51,6 +51,11 @@ public class SphereSpawnManager : MonoBehaviour
     }
 
     void DetectHit(){
+        if (PauseScript.isPaused)
+        {
+            return;
+        }
+
         if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f)), out RaycastHit hit, Mathf.Infinity, layer)){
             Destroy(hit.collider.gameObject);
             activeSpheres.Remove(hit.collider.gameObject);

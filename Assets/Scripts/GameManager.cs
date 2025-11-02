@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static float timer = 30f;
+    public static float timer;
     [SerializeField] GameObject timerText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        timer = 30f;
         
     }
 
