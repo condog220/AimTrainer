@@ -10,7 +10,7 @@ public class MoveCamera : MonoBehaviour
         float rotationY = 0f;
         float dotperinch;
         private float radsPerDot;
-        private float userSens;
+        public float userSens;
         [SerializeField] private float sensMultiplier;
 
     void Start(){
