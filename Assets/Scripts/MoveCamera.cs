@@ -37,17 +37,5 @@ public class MoveCamera : MonoBehaviour
             rotationX = Mathf.Clamp(rotationX, -90f, 90f);
             transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
         }
-
-
-        if(Input.GetKey(KeyCode.Escape)){
-            if(locked == true){
-                locked = false;
-                Cursor.lockState = CursorLockMode.None;
-            }
-            else{
-                locked = true;
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-        }
     }
 }
