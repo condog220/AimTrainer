@@ -12,7 +12,6 @@ public class MoveCamera : MonoBehaviour
         private float radsPerDot;
         public float userSens;
         [SerializeField] private float sensMultiplier;
-        bool locked = true;
 
     void Start(){
         Cursor.lockState = CursorLockMode.Locked;
@@ -25,17 +24,14 @@ public class MoveCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (PauseScript.isPaused)
         {
             return;
         }
 
-        if(locked){
-            rotationY += Input.GetAxisRaw("Mouse X") * sensMultiplier/0.4f;
-            rotationX -=  Input.GetAxisRaw("Mouse Y") * sensMultiplier/0.4f;
-            rotationX = Mathf.Clamp(rotationX, -90f, 90f);
-            transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
-        }
+        rotationY += Input.GetAxisRaw("Mouse X") * sensMultiplier/0.4f;
+        rotationX -=  Input.GetAxisRaw("Mouse Y") * sensMultiplier/0.4f;
+        rotationX = Mathf.Clamp(rotationX, -90f, 90f);
+        transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
     }
 }

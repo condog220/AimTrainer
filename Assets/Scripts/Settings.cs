@@ -5,21 +5,22 @@ using UnityEngine.UI;
 public class Settings : MonoBehaviour
 {
 
-    public static float sensitivity = 1.0f;
     public static float volume = 1.0f;
+    public static float sensitivity = 1.0f;
 
-    public Slider sensSlider;
-    public Slider volumeSlider;
-    public GameObject sensValue;
-    public GameObject volumeValue;
+    [SerializeField] Slider volumeSlider;
+    [SerializeField] Slider sensitivitySlider;
+    [SerializeField] GameObject volumeVal;
+    [SerializeField] GameObject sensitivityVal;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        sensSlider.value = sensitivity;
         volumeSlider.value = volume;
-
-
+        sensitivitySlider.value = sensitivity;
+        volumeVal.GetComponent<Text>().text = (volume * 100).ToString("0");
+        sensitivityVal.GetComponent<Text>().text = sensitivity.ToString("0.00");
     }
 
     // Update is called once per frame
@@ -28,18 +29,15 @@ public class Settings : MonoBehaviour
         
     }
 
-    public void onChangeSens(float value)
+    public void SetVolume(float vol)
     {
-        sensitivity = value;
-        sensValue.GetComponent<Text>().text = sensitivity.ToString();
-
+        volume = vol;
+        volumeVal.GetComponent<Text>().text = (volume * 100).ToString("0");
     }
 
-    public void onChangeVolume(float value)
+    public void SetSensitivity(float sens)
     {
-        volume = value;
-        volumeValue.GetComponent<Text>().text = volume.ToString();
+        sensitivity = sens;
+        sensitivityVal.GetComponent<Text>().text = sensitivity.ToString("0.00");
     }
-
-
 }
