@@ -29,8 +29,8 @@ public class MoveCamera : MonoBehaviour
             return;
         }
 
-        rotationY += Input.GetAxisRaw("Mouse X") * sensMultiplier/0.4f;
-        rotationX -=  Input.GetAxisRaw("Mouse Y") * sensMultiplier/0.4f;
+        rotationY += Input.GetAxisRaw("Mouse X") * sensMultiplier/0.4f * Time.deltaTime;
+        rotationX -=  Input.GetAxisRaw("Mouse Y") * sensMultiplier/0.4f * Time.deltaTime;
         rotationX = Mathf.Clamp(rotationX, -90f, 90f);
         transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
     }

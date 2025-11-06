@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        timer = 3f;
+        timer = 30f;
     }
 
     // Update is called once per frame
