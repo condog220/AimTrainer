@@ -12,6 +12,11 @@ public class ScoreManager : MonoBehaviour
 
     [SerializeField] GameObject scoreText;
     [SerializeField] GameObject accuracyText;
+
+    private const string LastScoreKey = "LastScore";
+
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -56,6 +61,8 @@ public class ScoreManager : MonoBehaviour
 
     public int getScore()
     {
+        if (score > PlayerPrefs.GetInt(LastScoreKey, 0))
+            saveScore();
         return score;
     }
 
@@ -69,6 +76,15 @@ public class ScoreManager : MonoBehaviour
         score = 0;
         totalShots = 0;
         totalHits = 0;
+    }
+
+    private void saveScore()
+    {
+        PlayerPrefs.SetInt("LastScore", score);
+    }
+
+    public int getHighScore() {
+        return PlayerPrefs.GetInt(LastScoreKey, 0);
     }
 
 
