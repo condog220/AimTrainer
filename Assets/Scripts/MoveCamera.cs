@@ -15,10 +15,7 @@ public class MoveCamera : MonoBehaviour
 
     void Start(){
         Cursor.lockState = CursorLockMode.Locked;
-        dotperinch = 16.3286f;
-        radsPerDot = math.TAU / dotperinch;
         userSens = SettingsManager.sensitivity;
-        sensMultiplier = userSens * radsPerDot;
     }
 
     // Update is called once per frame
@@ -29,8 +26,8 @@ public class MoveCamera : MonoBehaviour
             return;
         }
 
-        rotationY += Input.GetAxisRaw("Mouse X") * sensMultiplier/0.4f * Time.deltaTime;
-        rotationX -=  Input.GetAxisRaw("Mouse Y") * sensMultiplier/0.4f * Time.deltaTime;
+        rotationY += Input.GetAxisRaw("Mouse X") * userSens;
+        rotationX -=  Input.GetAxisRaw("Mouse Y") * userSens;
         rotationX = Mathf.Clamp(rotationX, -90f, 90f);
         transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
     }
