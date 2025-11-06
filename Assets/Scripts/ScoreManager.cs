@@ -27,9 +27,7 @@ public class ScoreManager : MonoBehaviour
     public void updateScore()
     {
         score += 200;
-        scoreText.GetComponent<Text>().text = score.ToString();
-
-
+        scoreText.GetComponent<TMPro.TextMeshProUGUI>().text = score.ToString();
     }
 
     public void updateAccuracy()
@@ -40,7 +38,7 @@ public class ScoreManager : MonoBehaviour
         else
         {
             accuracy = ((float)totalHits / (float)totalShots) * 100f;
-            accuracyText.GetComponent<Text>().text = accuracy.ToString("F2") + "%";
+            accuracyText.GetComponent<TMPro.TextMeshProUGUI>().text = accuracy.ToString("F2") + "%";
         }
     }
 
@@ -55,4 +53,23 @@ public class ScoreManager : MonoBehaviour
         updateAccuracy();
 
     }
+
+    public int getScore()
+    {
+        return score;
+    }
+
+    public int getAccuracy()
+    {
+        return (int)accuracy;
+    }
+
+    public void resetScore()
+    {
+        score = 0;
+        totalShots = 0;
+        totalHits = 0;
+    }
+
+
 }
