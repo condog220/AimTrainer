@@ -14,7 +14,6 @@ public class SphereSpawnManager : MonoBehaviour
     [SerializeField] LayerMask layer;
     [SerializeField] AudioSource hitSound;
     [SerializeField] AudioClip hitClip;
-    [SerializeField] int timer;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
