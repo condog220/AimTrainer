@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject resultScreen;
     [SerializeField] GameObject scoreResult;
     [SerializeField] GameObject accuracyResult;
+    [SerializeField] GameObject highScoreResult;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
 
     public void resultsScreen()
     {
+        PauseScript.isPaused = true;
         resultScreen.SetActive(true);
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
@@ -52,6 +54,7 @@ public class GameManager : MonoBehaviour
 
         scoreResult.GetComponent<TMPro.TextMeshProUGUI>().text = ScoreManager.instance.getScore().ToString();
         accuracyResult.GetComponent<TMPro.TextMeshProUGUI>().text = ScoreManager.instance.getAccuracy().ToString("F2") + "%";
+        highScoreResult.GetComponent<TMPro.TextMeshProUGUI>().text = ScoreManager.instance.getHighScore().ToString();
 
     }
 
@@ -66,7 +69,7 @@ public class GameManager : MonoBehaviour
         {
             ScoreManager.instance.resetScore();
         }
-
+        PauseScript.isPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
