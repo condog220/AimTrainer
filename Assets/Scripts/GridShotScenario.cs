@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random=UnityEngine.Random;
 
-public class SphereSpawnManager : MonoBehaviour
+public class GridShotScenario : MonoBehaviour
 {
     [SerializeField] GameObject spherePrefab;
     public int maxSphere = 3;
