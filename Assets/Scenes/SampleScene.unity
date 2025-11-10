@@ -6793,7 +6793,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2024426092}
-  - component: {fileID: 2024426091}
+  - component: {fileID: 2024426093}
   m_Layer: 0
   m_Name: GridShotHandler
   m_TagString: Untagged
@@ -6801,37 +6801,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2024426091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2024426089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fefadde8366b7d48b0bc49e42d3550a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spherePrefab: {fileID: 1081327426419889757, guid: a7c41ddde40cbdb44bac300ce1ccd002, type: 3}
-  maxSphere: 3
-  randomSpawn: 0
-  activeSpheres: []
-  spawnList:
-  - {fileID: 1539851230}
-  - {fileID: 1708363577}
-  - {fileID: 731922039}
-  - {fileID: 1391710560}
-  - {fileID: 1567743976}
-  - {fileID: 1899069444}
-  - {fileID: 1032116166}
-  - {fileID: 1851372303}
-  - {fileID: 169469097}
-  layer:
-    serializedVersion: 2
-    m_Bits: 64
-  hitSound: {fileID: 1687715101}
-  hitClip: {fileID: 8300000, guid: 13730588fe8ddc0429db60fa20fbe5da, type: 3}
 --- !u!4 &2024426092
 Transform:
   m_ObjectHideFlags: 0
@@ -6847,6 +6816,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 672337829}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2024426093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024426089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a744bdb4109fc74c8a14032ac71b44f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnList:
+  - {fileID: 1539851230}
+  - {fileID: 169469097}
+  - {fileID: 1708363577}
+  - {fileID: 731922039}
+  - {fileID: 1391710560}
+  - {fileID: 1567743976}
+  - {fileID: 1899069444}
+  - {fileID: 1032116166}
+  - {fileID: 1851372303}
+  layer:
+    serializedVersion: 2
+    m_Bits: 64
+  hitSound: {fileID: 1687715101}
+  hitClip: {fileID: 8300000, guid: 13730588fe8ddc0429db60fa20fbe5da, type: 3}
+  spherePrefab: {fileID: 1081327426419889757, guid: a7c41ddde40cbdb44bac300ce1ccd002, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
