@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AimTrainManager : MonoBehaviour
@@ -12,11 +13,19 @@ public class AimTrainManager : MonoBehaviour
     private GameMode currentGameMode;
     public List<GameObject> ActiveTargets { get; private set; } = new List<GameObject>();
 
+    public enum states
+    {
+        GridShot,
+        FlickShot,
+        TrackingShot
+    }
+
 
     void Start()
     {
+
         hitSound.volume = SettingsManager.volume;
-        SetScenario(new GridShot());
+        SetScenario(new Tracking());
 
     }
 
@@ -43,6 +52,14 @@ public class AimTrainManager : MonoBehaviour
         currentGameMode.StartMode(this);
     }
 
+    private void OnMouseDown()
+    {
+        if(currentGameMode is Tracking)
+        {
+            DetectHit();
+        }
+    }
+
     private void DetectHit()
     {
         if (PauseScript.isPaused)
@@ -50,13 +67,26 @@ public class AimTrainManager : MonoBehaviour
             return;
         }
 
-        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f)), out RaycastHit hit, Mathf.Infinity, layer))
+        bool rayHit = Physics.Raycast(Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f)), out RaycastHit hit, Mathf.Infinity, layer);
+
+        if (rayHit)
         {
-            Destroy(hit.collider.gameObject);
-            hitSound.PlayOneShot(hitClip);
-            currentGameMode.HandleHit(hit.collider.gameObject);
-            ScoreManager.instance.updateScore();
-            ScoreManager.instance.registerShot(true);
+            if (currentGameMode is GridShot)
+            {
+                Destroy(hit.collider.gameObject);
+                hitSound.PlayOneShot(hitClip);
+                currentGameMode.HandleHit(hit.collider.gameObject);
+                ScoreManager.instance.updateScore();
+                ScoreManager.instance.registerShot(true);
+            }
+            else if (currentGameMode is Tracking)
+            {
+                currentGameMode.HandleHit(hit.collider.gameObject);
+                hitSound.PlayOneShot(hitClip);
+                ScoreManager.instance.updateScore();
+                ScoreManager.instance.registerShot(true);
+            }
+
         }
         else
         {
