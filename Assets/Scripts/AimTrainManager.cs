@@ -10,6 +10,9 @@ public class AimTrainManager : MonoBehaviour
     [SerializeField] AudioClip hitClip;
     [SerializeField] public GameObject spherePrefab;
 
+    private float fireRate = 0.2f;
+    private float nextFire = 0f;
+
     private GameMode currentGameMode;
     public List<GameObject> ActiveTargets { get; private set; } = new List<GameObject>();
 
@@ -34,9 +37,18 @@ public class AimTrainManager : MonoBehaviour
     {
         currentGameMode.Update();
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && currentGameMode is GridShot)
         {
             DetectHit();
+        }
+
+        else if(currentGameMode is Tracking)
+        {
+            if(Input.GetMouseButton(0) && Time.time > nextFire)
+            {
+                nextFire = Time.time + fireRate;
+                DetectHit();
+            }
         }
 
     }
@@ -52,13 +64,6 @@ public class AimTrainManager : MonoBehaviour
         currentGameMode.StartMode(this);
     }
 
-    private void OnMouseDown()
-    {
-        if(currentGameMode is Tracking)
-        {
-            DetectHit();
-        }
-    }
 
     private void DetectHit()
     {
