@@ -10,6 +10,7 @@ public class Tracking : GameMode
     private float maxX = 4f;
     private float minY = 2f;
     private float maxY = 6f;
+
     public void StartMode(AimTrainManager manager)
     {
         this.manager = manager;
@@ -30,6 +31,7 @@ public class Tracking : GameMode
 
     public void HandleHit(GameObject target)
     {
+        health -= 20;
 
         if (manager.ActiveTargets.Count < maxSpheres)
         {
