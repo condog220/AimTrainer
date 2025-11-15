@@ -2,14 +2,15 @@ using UnityEngine;
 
 public class MovingTarget : MonoBehaviour
 {
-
-    private float max = 10f;
-    private float min = -10f;
     private float direction = 1f; // 1 for right, -1 for left
+    private float timer = 0f;
+    private float changeInterval;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        changeInterval = Random.Range(0.5f, 4f);
         
     }
 
@@ -18,15 +19,15 @@ public class MovingTarget : MonoBehaviour
     {
         float xValue = transform.position.x + direction * Time.deltaTime * 3f;
 
-        if (xValue >= max)
+        timer += Time.deltaTime;
+
+        if(timer >= changeInterval)
         {
-            direction = -1f;
-            Debug.Log("Changing direction to left");
-        }
-        else if (xValue <= min)
-        {
-            direction = 1f;
-            Debug.Log("Changing direction to right");
+            direction *= -1f;
+
+            timer = 0f;
+            changeInterval = Random.Range(0.5f, 4f);
+            
         }
 
         transform.position = new Vector3(xValue, transform.position.y, transform.position.z);
