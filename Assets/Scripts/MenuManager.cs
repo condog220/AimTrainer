@@ -23,10 +23,7 @@ public class MenuManager : MonoBehaviour
 
     public void playGame()
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("Assets/Scenes/SampleScene.unity");
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        SceneManager.LoadScene("SelectMode");
     }
 
     public void toMenu()
