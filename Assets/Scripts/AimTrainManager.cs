@@ -28,7 +28,13 @@ public class AimTrainManager : MonoBehaviour
     {
 
         hitSound.volume = SettingsManager.volume;
-        SetScenario(new Tracking());
+        if(GameModeSelect.currentMode != null)
+        {
+            SetScenario(GameModeSelect.currentMode);
+        } else
+        {
+            SetScenario(new GridShot());
+        }
 
     }
 
