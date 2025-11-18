@@ -10,18 +10,12 @@ public class AimTrainManager : MonoBehaviour
     [SerializeField] AudioClip hitClip;
     [SerializeField] public GameObject spherePrefab;
 
+
     private float fireRate = 0.2f;
     private float nextFire = 0f;
 
     private GameMode currentGameMode;
     public List<GameObject> ActiveTargets { get; private set; } = new List<GameObject>();
-
-    public enum states
-    {
-        GridShot,
-        FlickShot,
-        TrackingShot
-    }
 
 
     void Start()
@@ -43,7 +37,7 @@ public class AimTrainManager : MonoBehaviour
     {
         currentGameMode.Update();
 
-        if (Input.GetMouseButtonDown(0) && currentGameMode is GridShot)
+        if (Input.GetMouseButtonDown(0) && currentGameMode is GridShot || Input.GetMouseButtonDown(0) && currentGameMode is Strafing)
         {
             DetectHit();
         }
@@ -82,7 +76,7 @@ public class AimTrainManager : MonoBehaviour
 
         if (rayHit)
         {
-            if (currentGameMode is GridShot)
+            if (currentGameMode is GridShot || currentGameMode is Strafing)
             {
                 Destroy(hit.collider.gameObject);
                 hitSound.PlayOneShot(hitClip);

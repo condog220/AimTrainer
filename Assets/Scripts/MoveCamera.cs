@@ -12,6 +12,8 @@ public class MoveCamera : MonoBehaviour
         private float radsPerDot;
         public float userSens;
         [SerializeField] private float sensMultiplier;
+    [SerializeField] private Transform player;
+    public Transform camPos;
 
     void Start(){
         Cursor.lockState = CursorLockMode.Locked;
@@ -30,5 +32,11 @@ public class MoveCamera : MonoBehaviour
         rotationX -=  Input.GetAxisRaw("Mouse Y") * userSens;
         rotationX = Mathf.Clamp(rotationX, -90f, 90f);
         transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
+        transform.position = player.position;
+
+
+
+
+
     }
 }
