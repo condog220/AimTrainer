@@ -29,4 +29,10 @@ public class GameModeSelect : MonoBehaviour
         currentMode = new Tracking();
         SceneManager.LoadScene("SampleScene");
     }
+
+    public void loadStrafing()
+    {
+        currentMode = new Strafing();
+        SceneManager.LoadScene("SampleScene");
+    }
 }

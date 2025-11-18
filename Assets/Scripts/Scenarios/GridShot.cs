@@ -13,6 +13,8 @@ public class GridShot : GameMode
         {
             SpawnTarget();
         }
+
+
     }
 
     public void Update()
@@ -34,9 +36,6 @@ public class GridShot : GameMode
         {
             SpawnTarget();
         }
-
-
-
     }
 
     private void SpawnTarget()
